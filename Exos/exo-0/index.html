@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <h1>Exercice 0</h1>
+
+    <script type="text/javascript">
+        /* Section 1 */
+
+        var name = "Joe";//je déclare la variable nom égale à Joe
+        var city = 'London';//je déclare la variable ville égale à Londres
+        var age = 32;//je déclare la variable age égale à 32
+        var isRed = true;//je déclare la variable estRoux égale à vraie
+        var isOld = age > 80;//je déclare la variable estVieux réutilsant la variable age et la compare, si superieur a 80 = alors estVieux
+        var previousJobs = ['lawyer', 'developper', 'Professionnal climber'];//je déclare la variable emplois précédent et je lui attribut plusieur travails possible
+
+        function info(height, weight) {//je créer un fonction info avec deux arguments la taille et le poids
+            if (height > 180) {//je créer une condition si la taille est superieur à 180 cm
+                console.log('Vous êtes grand');//j'affiche :  Vous êtes grand
+            }
+            if (weight < 0) {//je créer une condition si le poids est inférieur à 0
+                console.log('oups, there is a problem');//j'affiche :  oups il y a un probléme
+            } else if (weight < 15) {//Sinon si le poids est inférieu à 15
+                console.log('Are you that slim ?')// j'afiche : vous êtes maigre
+            } else {//sinon 
+                console.log('Good !')//j'affiche : bien
+            }
+        }
+
+        info(165, 45);//j'appel ma fonction info lui passant les paramètres 165, 45.
+
+        var myHeight = 175;// je créer une variable  maTaille ets égale à 175
+        var myWeight = 86;// je créer une variable  monPoids ets égale à 86
+
+        info(myHeight, myWeight);//j'appel ma fonction info lui passant les variables maTaille, monPoids.
+
+        info(myHeight + 15, myWeight - 100);//j'appel ma fonction info lui passant les variables maTaille + 15, monPoids - 100.
+
+        function toUpper(name) {// je créer une fonction supérieur pour écrire en CAPITALES la variable passée en paramètre
+            return name.toUpperCase();//J'affiche ma variable en CAPITALES
+        }
+
+        var upperName = toUpper(name);//je crée un variable nomSuperieur utilsant la fonction supérieur en luis passant en paramètre la variable nom
+
+        for (i = 0; i < 3; i = i + 1) {// je créer un boucle for pour afficher les trois travails précedent 
+            console.log(previousJobs[i]);//j'affiche a chaque tour de boucle le travail précedent
+        }
+
+        /* Section 2: */
+
+       console.log(city);   
+
+       console.log(isRed);
+       
+       console.log(name);
+
+        /* Section 3 */
+
+        console.log(myVariable);//iMessage d'erreur puisque myVariable n'est pas définit dans le code ci-dessus
+    </script>
+
+</body>
+
+</html>
