@@ -1,13 +1,59 @@
 <!doctype html>
-<html  lang="fr">
-    <head>
-        <meta charset="utf-8">
-		<script src="datas.js"></script>
-		<script src="exo7.js"></script>
-	</head>
-    <body>
-		<div class="container">
-			<h1>Exercice 7</h1>
+<html lang="fr">
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Exercice 7</h1>
+	</div>
+
+	<div>
+		<form name="typeForm">
+			<div class="form-group col-md-6">
+				<label for="typeInput">Quel type de produit cherchez-vous : voiture, maison, jeu, jeu vidéos, spéctacle ?</label>
+				<input name="textTypeForm" type="text" class="form-control" id="typeProduct" aria-describedby="typeHelp" placeholder="Enter le type de produit">
+				<small id="typeHelp" class="form-text text-muted">Rentrer le type de produit que vous rechercher.</small>
+				<div class="d-flex justify-content-end">
+				<select onchange="showType()" id="trie-select">
+					<option value="">--Choisissez un Ordre de trie--</option>
+					<option value="1">Alphabetique Croissant</option>
+					<option value="2">Alphabetique Decroissant</option>
+					<option value="3">Prix Croissant</option>
+					<option value="4">Prix Decroissant</option>
+			</select>
 		</div>
-	</body>
+			
+			<div class="d-flex justify-content-end">
+				<input type="checkbox" class="" aria-label="Affiche les articles en rupture de stock" id="outOfStock" checked>
+				<label class=" ml-3" for="CheckoutOfStock"> Afficher les articles en rupture de stock</label>
+				
+			</div>
+
+	<button onclick="showType()" type="button" class="btn btn-primary ml-3">valider</button><br>
+	</form><br>
+<div class="d-flex justify-content-end">
+	<div>
+	<form action="" method="" name="addArticle" >
+		<input type="text" placeholder="name" name="name"><br>
+    <input type="text" placeholder="type" name="type"><br>
+    <input type="text" placeholder="description" name="description"><br>
+    <input type="text" placeholder="price" name="price"><br>
+    <input type="text" placeholder="quantity" name="quantity">             
+	</div><br>
+    <div class="d-flex justify-content-center" id="items">
+        <button onclick="addItem()" class="btn btn-primary" type="button" id="addArticle">Add article</button>
+    </div>
+</form>
+</div>
+	</div>
+</div>
+	<script src="datas.js"></script>
+	<script src="exo7.js"></script>
+</body>
+
 </html>
