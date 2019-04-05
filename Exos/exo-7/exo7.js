@@ -9,23 +9,30 @@ function traduct() {
             }
         }
     });
+    console.log(jsonDatas);
 }
-//traduct();
+traduct();
 
 function showType() {// fonction qui affiche le type de produit demmander dans le formulaire
+    console.clear();
     var askForm = '';//variable vide me permettant de stocker l'entrée du formulaire
     var typeAsk = [];// tableau vide qui vas me permettre stocker les objet du type demmander
     askForm = document.getElementById('typeProduct').value;//je stock l'entrée du formulaire dans askForm
     var checkbox = document.getElementById('outOfStock');//variable checkbox qui dans le document getl'eement par l'id (outOfStock)
 
-    jsonDatas.forEach(function (testType) {//boucle qui navigue dans jsonDatas et qui a chaques tour de boucle rentre les données dans l'objet object crée avec function(testType)
-        if (testType.typeTraduct === askForm) { //condition qui verifie que la valeur stocké dans askForm match avec le type de l'objet stocké dans testType (testType.typeTraduct)
-            if (checkbox.checked === true) {//je verifie si ma checkbox est coché (donc afficher les produit en rupture de stock)
-                typeAsk.push(testType); //si oui je push l'objet courant dans mon tableau typeAsk    
-
-            } else if (testType.quantity > 0) {// sinon je regarde dans testType si la quantité est superieur a zero 
-                typeAsk.push(testType);//si oui je push l'objet courant dans mon tableau typeAsk
-            }
+    jsonDatas.forEach(function (object) {//boucle qui navigue dans jsonDatas et qui a chaques tour de boucle rentre les données dans l'objet object crée avec function(testType)     
+        if (object.typeTraduct === askForm) { //condition qui verifie que la valeur stocké dans askForm match avec le type de l'objet stocké dans testType (testType.typeTraduct) et je verifie si ma checkbox est coché (donc afficher les produit en rupture de stock)
+            object.items.forEach(function (testType) {
+                if (checkbox.checked === true) {
+                    typeAsk.push(testType);
+                } else if (checkbox.checked === false) {////condition qui verifie que la valeur stocké dans askForm match avec le type de l'objet stocké dans testType (testType.typeTraduct) je verifie si ma checkbox n'est pas  coché (donc ne pas afficher les produit en rupture de stock)
+                    if (testType.quantity > 0) {// je regarde dans testType si la quantité est superieur a zero 
+                        typeAsk.push(testType); //si oui je push l'objet courant dans mon tableau typeAsk  
+                    } else {
+                        console.log(jsonDatas);
+                    }
+                }
+            })
         }
     });
     console.log(typeAsk);
@@ -59,21 +66,27 @@ function triAlpha(typeAsk) {// je passe en parammetre typeAsk pour pouvoir utili
     console.log(typeAsk);//j'affiche le resultat (typeAsk) qui correspond a la fonction qui a runé
 }
 
-function addItem(name, type, description, price, quantity) {//fonction pour creer et ajouter de objets a jsonDatas
-    var item = {}//je creé un ojet vide
+function addItem() {//fonction pour creer et ajouter de objets a jsonDatas
+    var item = {};//je creé un ojet vide
+    var type = document.addArticle.type.value;
     //je recupre les valeur du fomulaire en lui donnant le chemin pour chaque valeur
-    name = document.addArticle.name.value;
-    type = document.addArticle.type.value;
-    description = document.addArticle.description.value;
-    price = document.addArticle.price.value;
-    quantity = document.addArticle.quantity.value;
+    var name = document.addArticle.name.value;
+    var description = document.addArticle.description.value;
+    var price = document.addArticle.price.value;
+    var quantity = document.addArticle.quantity.value;
     //je met dans l'objet la valeur récuperée
     item.name = name;
-    item.type = type;
     item.description = description;
     item.price = price;
     item.quantity = quantity;
-    jsonDatas.push(item);// je vais stocker (push) mon objet dans jsonDatas
+    jsonDatas.forEach(function(objectType){
+        if(objectType.type === type){
+            objectType.items.push(item);// je vais stocker (push) mon objet dans jsonDatas
+        }else {
+            console.log('Quelque chose ne vas pas !');
+        }
+    });
+ 
     console.log(item)
     console.log(jsonDatas);
 }
